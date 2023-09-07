@@ -1,0 +1,30 @@
+<h2> Personen </h2>
+
+<!--<ul class = "heroes">-->
+<!--  <li *ngFor="let person of personen">-->
+<!--      <span class="badge">{{person.id}}</span>-->
+<!--      <span class="name">{{person.vorname}}</span>-->
+<!--    <span class="name">{{person.nachname}}</span>-->
+<!--    <span class="name">{{person.email}}</span>-->
+<!--  </li>-->
+<!--</ul>-->
+
+ <button id="addUserButton" >add user</button>
+
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Vorname</th>
+    <th>Nachname</th>
+    <th>Email</th>
+    <th>Aktion</th>
+  </tr>
+  <tr *ngFor = "let person of personen">
+    <td>{{person.id}}</td>
+    <td>{{person.vorname}}</td>
+    <td>{{person.nachname}}</td>
+    <td>{{person.email}}</td>
+    <td><button>del</button> <button>edit</button> </td>
+  </tr>
+</table>
