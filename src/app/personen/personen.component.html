@@ -1,21 +1,10 @@
 <h2> Personen </h2>
 
-<!--<ul class = "heroes">-->
-<!--  <li *ngFor="let person of personen">-->
-<!--      <span class="badge">{{person.id}}</span>-->
-<!--      <span class="name">{{person.vorname}}</span>-->
-<!--    <span class="name">{{person.nachname}}</span>-->
-<!--    <span class="name">{{person.email}}</span>-->
-<!--  </li>-->
-<!--</ul>-->
-
-
 <div>
  <button id="addUserButton" (click)="addNewUser();">
    Add User
  </button>
 
-<!-- Input fields for adding a new user -->
 <input [(ngModel)]="newUser.vorname" placeholder="Vorname">
 <input [(ngModel)]="newUser.nachname" placeholder="Nachname">
 <input [(ngModel)]="newUser.email" placeholder="Email">
@@ -35,6 +24,9 @@
     <td>{{person.vorname}}</td>
     <td>{{person.nachname}}</td>
     <td>{{person.email}}</td>
-    <td><button>del</button> <button>edit</button> </td>
+    <td>
+      <button (click)="delete(this.person);">del</button>
+      <button>edit</button>
+    </td>
   </tr>
 </table>

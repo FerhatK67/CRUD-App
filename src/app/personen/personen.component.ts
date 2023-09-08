@@ -19,7 +19,6 @@ export class PersonenComponent implements OnInit{
     {id: 7, vorname: "Sansa", nachname: "Stark", email: "sansa@mail.com"},
    ]
 
-
   newUser: Person = {
     id: 0,
     vorname: '',
@@ -31,7 +30,6 @@ export class PersonenComponent implements OnInit{
     if (this.newUser.vorname.trim() !== "" && this.newUser.nachname.trim() !== "" && this.newUser.email.trim() !== "") {
       this.newUser.id = this.personen.length + 1;
       this.personen.push(this.newUser);
-
       //das beseitigen der angegeben Daten nachdem Klick auf den button "Add User"
     this.newUser = {id: 0, vorname: "", nachname: "", email: ""};
   } else {
@@ -39,7 +37,10 @@ export class PersonenComponent implements OnInit{
     }
   }
 
-  ngOnInit() {
+  delete (person: Person): void {
+    this.personen = this.personen.filter(p => p.id !== person.id);
   }
+
+  ngOnInit() {}
 
 }
