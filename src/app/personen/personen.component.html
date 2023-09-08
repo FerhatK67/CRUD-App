@@ -9,7 +9,17 @@
 <!--  </li>-->
 <!--</ul>-->
 
- <button id="addUserButton" >add user</button>
+
+<div>
+ <button id="addUserButton" (click)="addNewUser();">
+   Add User
+ </button>
+
+<!-- Input fields for adding a new user -->
+<input [(ngModel)]="newUser.vorname" placeholder="Vorname">
+<input [(ngModel)]="newUser.nachname" placeholder="Nachname">
+<input [(ngModel)]="newUser.email" placeholder="Email">
+</div>
 
 
 <table>

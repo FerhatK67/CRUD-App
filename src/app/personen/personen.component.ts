@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import { Person } from "../person";
 
+
 @Component({
   selector: 'app-personen',
   templateUrl: './personen.component.html',
@@ -19,8 +20,26 @@ export class PersonenComponent implements OnInit{
    ]
 
 
+  newUser: Person = {
+    id: 0,
+    vorname: '',
+    nachname: '',
+    email: ''
+  };
+
+  addNewUser() {
+    if (this.newUser.vorname.trim() !== "" && this.newUser.nachname.trim() !== "" && this.newUser.email.trim() !== "") {
+      this.newUser.id = this.personen.length + 1;
+      this.personen.push(this.newUser);
+
+      //das beseitigen der angegeben Daten nachdem Klick auf den button "Add User"
+    this.newUser = {id: 0, vorname: "", nachname: "", email: ""};
+  } else {
+      alert("Es wurden nicht alle Felder ausgefüllt!");
+    }
+  }
 
   ngOnInit() {
-
   }
+
 }
