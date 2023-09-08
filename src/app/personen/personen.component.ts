@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { Person } from "../person";
 
-
 @Component({
   selector: 'app-personen',
   templateUrl: './personen.component.html',
@@ -39,6 +38,38 @@ export class PersonenComponent implements OnInit{
 
   delete (person: Person): void {
     this.personen = this.personen.filter(p => p.id !== person.id);
+  }
+
+  editingPerson: Person | null = null;
+
+  editPerson(person: Person):void{
+   this.editingPerson =  {...person};
+}
+
+  updatePerson(): void {
+    if(
+      this.editingPerson &&
+      this.editingPerson.vorname.trim() !== "" &&
+      this.editingPerson.nachname.trim() !== "" &&
+      this.editingPerson.email.trim() !== ""
+    ) {
+
+      const index = this.personen.findIndex(
+        (p) => p.id === this.editingPerson!.id
+      );
+      if(index !== -1) {
+        this.personen[index] = {...this.editingPerson}; //kopie
+      }
+
+
+      this.editingPerson = null;
+    } else {
+      alert("Es wurden nicht alle Felder ausgefüllt!");
+    }
+  }
+
+  cancelEdit(): void {
+    this.editingPerson = null;
   }
 
   ngOnInit() {}

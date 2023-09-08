@@ -5,15 +5,14 @@ import { AppComponent } from './app.component';
 import { PersonenComponent } from './personen/personen.component';
 import {FormsModule} from "@angular/forms";
 
-
 @NgModule({
   declarations: [
     AppComponent,
-    PersonenComponent
+    PersonenComponent,
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

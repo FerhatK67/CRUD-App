@@ -10,7 +10,6 @@
 <input [(ngModel)]="newUser.email" placeholder="Email">
 </div>
 
-
 <table>
   <tr>
     <th>Id</th>
@@ -25,8 +24,17 @@
     <td>{{person.nachname}}</td>
     <td>{{person.email}}</td>
     <td>
-      <button (click)="delete(this.person);">del</button>
-      <button>edit</button>
+      <button (click)="delete(person);">del</button>
+      <button (click)="editPerson(person);" >edit</button>
     </td>
   </tr>
 </table>
+
+<div *ngIf="editingPerson">
+  <h3>Bearbeiten</h3>
+  <input [(ngModel)]="editingPerson.vorname" placeholder="Vorname">
+  <input [(ngModel)]="editingPerson.nachname" placeholder="Nachname">
+  <input [(ngModel)]="editingPerson.email" placeholder="Email">
+  <button (click)="updatePerson()"> Aktualisieren </button>
+  <button (click)="cancelEdit()">Abbrechen</button>
+</div>
