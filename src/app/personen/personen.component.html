@@ -2,21 +2,25 @@
 
 <div>
   <button (click)="sortPersonByNachname();">Sortiere nach Nachname</button>
- <button id="addUserCheckButton" (click)="toggleAddUser();">
-   Person hinzufügen
- </button>
+  <button id="addUserCheckButton" (click)="toggleAddUser();">Person hinzufügen</button>
 
   <div *ngIf="isAddUserClicked">
-<input [(ngModel)]="newUser.vorname" placeholder="Vorname">
-<input [(ngModel)]="newUser.nachname" placeholder="Nachname">
-<input [(ngModel)]="newUser.email" placeholder="Email">
-    <button id="addUserButton" (click)="addNewUser()">
-      Bestätigen
-    </button>
-    <button (click)="toggleAddUser()">Schließen</button>
-
+    <h3>Hinzufügen</h3>
+    <input [(ngModel)]="newUser.vorname" placeholder="Vorname">
+    <input [(ngModel)]="newUser.nachname" placeholder="Nachname">
+    <input [(ngModel)]="newUser.email" placeholder="Email">
+    <button id="addUserButton" (click)="addNewUser()">Bestätigen</button>
+    <button (click)="toggleAddUser();">Schließen</button>
   </div>
+</div>
 
+<div *ngIf="editingPerson">
+  <h3>Bearbeiten</h3>
+  <input [(ngModel)]="editingPerson.vorname" placeholder="Vorname">
+  <input [(ngModel)]="editingPerson.nachname" placeholder="Nachname">
+  <input [(ngModel)]="editingPerson.email" placeholder="Email">
+  <button (click)="updatePerson()"> Aktualisieren</button>
+  <button (click)="cancelEdit()">Abbrechen</button>
 </div>
 
 <table>
@@ -27,23 +31,14 @@
     <th>Email</th>
     <th>Aktion</th>
   </tr>
-  <tr *ngFor = "let person of personen">
+  <tr *ngFor="let person of personen">
     <td>{{person.id}}</td>
     <td>{{person.vorname}}</td>
     <td>{{person.nachname}}</td>
     <td>{{person.email}}</td>
     <td>
-      <button (click)="delete(person);">del</button>
-      <button (click)="editPerson(person);" >edit</button>
+      <button (click)="delete(person);">delete</button>
+      <button (click)="editPerson(person);">edit</button>
     </td>
   </tr>
 </table>
-
-<div *ngIf="editingPerson">
-  <h3>Bearbeiten</h3>
-  <input [(ngModel)]="editingPerson.vorname" placeholder="Vorname">
-  <input [(ngModel)]="editingPerson.nachname" placeholder="Nachname">
-  <input [(ngModel)]="editingPerson.email" placeholder="Email">
-  <button (click)="updatePerson()"> Aktualisieren </button>
-  <button (click)="cancelEdit()">Abbrechen</button>
-</div>

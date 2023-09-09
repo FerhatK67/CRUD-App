@@ -21,3 +21,7 @@ th{
 #addUserButton{
   margin: 5px;
 }
+
+button+button{
+  margin: 2px;
+}

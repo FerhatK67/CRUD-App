@@ -29,6 +29,16 @@ export class PersonenComponent implements OnInit{
       this.newUser.vorname = this.titleCaseWord(this.newUser.vorname);
       this.newUser.nachname = this.titleCaseWord(this.newUser.nachname);
 
+      if(this.sorted) {
+        this.sortedPerson.sort((a, b) => {
+            if (a.nachname < b.nachname) return -1;
+            if (a.nachname > b.nachname) return 1;
+            return 0;
+          }
+        );
+        this.personen = this.sortedPerson;
+      }
+
       //das beseitigen der angegeben Daten nachdem Klick auf den button "Add User"
     this.newUser = {id: 0, vorname: "", nachname: "", email: ""};
   } else {
@@ -94,19 +104,34 @@ export class PersonenComponent implements OnInit{
 
   //sortieren von personen nach Name
 
+
+  sorted = false
+  sortedPerson = [...this.personen];
+
   sortPersonByNachname(): void {
 
-    const sortedPerson = [...this.personen];
 
-    sortedPerson.sort((a,b) =>
-      {
-      if (a.nachname < b.nachname) return -1;
-      if (a.nachname > b.nachname) return  1;
-      return  0;
-      }
-    );
+    if(!this.sorted) {
+      this.sorted = true;
+      this.sortedPerson.sort((a, b) => {
+          if (a.nachname < b.nachname) return -1;
+          if (a.nachname > b.nachname) return 1;
+          return 0;
+        }
+      );
+      this.personen = this.sortedPerson;
 
-    this.personen = sortedPerson;
+    } else if (this.sorted) {
+      this.sorted = false;
+      this.sortedPerson.sort((a, b) => {
+          if (a.id < b.id) return -1;
+          if (a.id > b.id) return 1;
+          return 0;
+        }
+      );
+
+
+    }
   }
 
   ngOnInit() {}
