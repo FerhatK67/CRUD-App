@@ -1,9 +1,11 @@
 <h2> Personen </h2>
 
 <div>
+  <button (click)="sortPersonByNachname();">Sortiere nach Nachname</button>
  <button id="addUserButton" (click)="addNewUser();">
    Add User
  </button>
+
 
 <input [(ngModel)]="newUser.vorname" placeholder="Vorname">
 <input [(ngModel)]="newUser.nachname" placeholder="Nachname">

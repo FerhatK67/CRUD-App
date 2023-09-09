@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import { Person } from "../person";
+import { PERSONEN } from "../mock-personen";
 
 @Component({
   selector: 'app-personen',
@@ -8,15 +9,8 @@ import { Person } from "../person";
 })
 export class PersonenComponent implements OnInit{
 
-  personen: Person[] = [
-    {id: 1, vorname: "Jon", nachname: "Snow", email: "jon@mail.com"},
-    {id: 2, vorname: "Daenerys", nachname: "Targaryen", email: "daenerys@mail.com"},
-    {id: 3, vorname: "Tyrion", nachname: "Lannister", email: "tyrion@mail.com"},
-    {id: 4, vorname: "Arya", nachname: "Stark", email: "arya@mail.com"},
-    {id: 5, vorname: "Cersei", nachname: "Lannister", email: "cersei@mail.com"},
-    {id: 6, vorname: "Jaime", nachname: "Lannister", email: "jaime@mail.com"},
-    {id: 7, vorname: "Sansa", nachname: "Stark", email: "sansa@mail.com"},
-   ]
+
+  personen = PERSONEN;
 
   newUser: Person = {
     id: 0,
@@ -29,11 +23,20 @@ export class PersonenComponent implements OnInit{
     if (this.newUser.vorname.trim() !== "" && this.newUser.nachname.trim() !== "" && this.newUser.email.trim() !== "") {
       this.newUser.id = this.personen.length + 1;
       this.personen.push(this.newUser);
+
+      this.newUser.vorname = this.titleCaseWord(this.newUser.vorname);
+      this.newUser.nachname = this.titleCaseWord(this.newUser.nachname);
+
       //das beseitigen der angegeben Daten nachdem Klick auf den button "Add User"
     this.newUser = {id: 0, vorname: "", nachname: "", email: ""};
   } else {
       alert("Es wurden nicht alle Felder ausgefüllt!");
     }
+  }
+
+   titleCaseWord(word: string) {
+    if (!word) return word;
+    return word[0].toUpperCase() + word.substr(1).toLowerCase();
   }
 
   delete (person: Person): void {
@@ -70,6 +73,21 @@ export class PersonenComponent implements OnInit{
 
   cancelEdit(): void {
     this.editingPerson = null;
+  }
+
+  sortPersonByNachname(): void {
+
+    const sortedPerson = [...this.personen];
+
+    sortedPerson.sort((a,b) =>
+      {
+      if (a.nachname < b.nachname) return -1;
+      if (a.nachname > b.nachname) return  1;
+      return  0;
+      }
+    );
+
+    this.personen = sortedPerson;
   }
 
   ngOnInit() {}
