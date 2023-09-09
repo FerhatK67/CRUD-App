@@ -1,7 +1,7 @@
-<h2> Personen </h2>
+
 
 <div>
-  <button (click)="sortPersonByNachname();">Sortiere nach Nachname</button>
+  <button (click)="sortPersonByNachname();">Sortieren</button>
   <button id="addUserCheckButton" (click)="toggleAddUser();">Person hinzufügen</button>
 
   <div *ngIf="isAddUserClicked">
@@ -37,8 +37,8 @@
     <td>{{person.nachname}}</td>
     <td>{{person.email}}</td>
     <td>
-      <button (click)="delete(person);">delete</button>
-      <button (click)="editPerson(person);">edit</button>
+      <button class="actionButton" (click)="delete(person);"><i class="fas fa-trash-alt"></i></button>
+      <button class="actionButton" (click)="editPerson(person);"  ><i class="fas fa-edit"></i></button>
     </td>
   </tr>
 </table>

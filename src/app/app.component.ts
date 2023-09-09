@@ -12,7 +12,7 @@ export class AppComponent {
   flag = "none";
 
   switchDisplay(): void {
-    this.flag == "none" ? this.flag = "block": this.flag = "none";
+    this.flag == "none" ? this.flag = "flex": this.flag = "none";
   }
 
 }

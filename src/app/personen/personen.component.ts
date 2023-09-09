@@ -72,6 +72,7 @@ export class PersonenComponent implements OnInit{
 
   editPerson(person: Person):void{
    this.editingPerson =  {...person};
+    document.documentElement.scrollTop = 0
 }
 
   updatePerson(): void {
