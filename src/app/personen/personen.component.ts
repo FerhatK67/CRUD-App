@@ -19,6 +19,8 @@ export class PersonenComponent implements OnInit{
     email: ''
   };
 
+  //hinzufügen von personen
+
   addNewUser() {
     if (this.newUser.vorname.trim() !== "" && this.newUser.nachname.trim() !== "" && this.newUser.email.trim() !== "") {
       this.newUser.id = this.personen.length + 1;
@@ -39,11 +41,24 @@ export class PersonenComponent implements OnInit{
     return word[0].toUpperCase() + word.substr(1).toLowerCase();
   }
 
+  isAddUserClicked = false;
+
+  toggleAddUser() {
+    this.isAddUserClicked = !this.isAddUserClicked;
+    if (!this.isAddUserClicked) {
+      this.newUser = { id: 0, vorname: "", nachname: "", email: "" };
+    }
+  }
+
+  //entfernen von personen
+
   delete (person: Person): void {
     this.personen = this.personen.filter(p => p.id !== person.id);
   }
 
   editingPerson: Person | null = null;
+
+  //editieren von personen
 
   editPerson(person: Person):void{
    this.editingPerson =  {...person};
@@ -61,10 +76,11 @@ export class PersonenComponent implements OnInit{
         (p) => p.id === this.editingPerson!.id
       );
       if(index !== -1) {
-        this.personen[index] = {...this.editingPerson}; //kopie
+          this.editingPerson.vorname = this.titleCaseWord(this.editingPerson.vorname);
+          this.editingPerson.nachname = this.titleCaseWord(this.editingPerson.nachname);
+
+          this.personen[index] = {...this.editingPerson}; //kopie
       }
-
-
       this.editingPerson = null;
     } else {
       alert("Es wurden nicht alle Felder ausgefüllt!");
@@ -74,6 +90,9 @@ export class PersonenComponent implements OnInit{
   cancelEdit(): void {
     this.editingPerson = null;
   }
+
+
+  //sortieren von personen nach Name
 
   sortPersonByNachname(): void {
 
