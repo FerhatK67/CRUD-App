@@ -1,15 +1,13 @@
 import {Component, OnInit} from '@angular/core';
-import { Person } from "../person";
-import { PERSONEN } from "../mock-personen";
+import {Person} from "../person";
+import {PERSONEN} from "../mock-personen";
 
 @Component({
   selector: 'app-personen',
   templateUrl: './personen.component.html',
   styleUrls: ['./personen.component.css']
 })
-export class PersonenComponent implements OnInit{
-
-
+export class PersonenComponent implements OnInit {
   personen = PERSONEN;
 
   infoPerson: Person = {
@@ -30,7 +28,8 @@ export class PersonenComponent implements OnInit{
     geschlecht: "",
   };
 
-  //hinzufügen von personen
+
+  //personen-hinzufügen
 
   addNewUser() {
     if (this.newUser.vorname.trim() !== "" && this.newUser.nachname.trim() !== "" && this.newUser.email.trim() !== "") {
@@ -40,7 +39,7 @@ export class PersonenComponent implements OnInit{
       this.newUser.vorname = this.titleCaseWord(this.newUser.vorname);
       this.newUser.nachname = this.titleCaseWord(this.newUser.nachname);
 
-      if(this.sorted) {
+      if (this.sorted) {
         this.sortedPerson.sort((a, b) => {
             if (a.nachname < b.nachname) return -1;
             if (a.nachname > b.nachname) return 1;
@@ -51,13 +50,13 @@ export class PersonenComponent implements OnInit{
       }
 
       //das beseitigen der angegeben Daten nachdem Klick auf den button "Add User"
-    this.newUser = {id: 0, vorname: "", nachname: "", email: "", geburtsdatum: "", geschlecht: ""};
-  } else {
+      this.newUser = {id: 0, vorname: "", nachname: "", email: "", geburtsdatum: "", geschlecht: ""};
+    } else {
       alert("Es wurden nicht alle Felder ausgefüllt!");
     }
   }
 
-   titleCaseWord(word: string) {
+  titleCaseWord(word: string) {
     if (!word) return word;
     return word[0].toUpperCase() + word.substr(1).toLowerCase();
   }
@@ -67,27 +66,28 @@ export class PersonenComponent implements OnInit{
   toggleAddUser() {
     this.isAddUserClicked = !this.isAddUserClicked;
     if (!this.isAddUserClicked) {
-      this.newUser = { id: 0, vorname: "", nachname: "", email: "", geburtsdatum: "", geschlecht: ""};
+      this.newUser = {id: 0, vorname: "", nachname: "", email: "", geburtsdatum: "", geschlecht: ""};
     }
   }
 
-  //entfernen von personen
 
-  delete (person: Person): void {
+  //personen-entfernen
+
+  delete(person: Person): void {
     this.personen = this.personen.filter(p => p.id !== person.id);
   }
 
   editingPerson: Person | null = null;
 
-  //editieren von personen
+  //personen-editieren
 
-  editPerson(person: Person):void{
-   this.editingPerson =  {...person};
+  editPerson(person: Person): void {
+    this.editingPerson = {...person};
     document.documentElement.scrollTop = 0
-}
+  }
 
   updatePerson(): void {
-    if(
+    if (
       this.editingPerson &&
       this.editingPerson.vorname.trim() !== "" &&
       this.editingPerson.nachname.trim() !== "" &&
@@ -97,11 +97,11 @@ export class PersonenComponent implements OnInit{
       const index = this.personen.findIndex(
         (p) => p.id === this.editingPerson!.id
       );
-      if(index !== -1) {
-          this.editingPerson.vorname = this.titleCaseWord(this.editingPerson.vorname);
-          this.editingPerson.nachname = this.titleCaseWord(this.editingPerson.nachname);
+      if (index !== -1) {
+        this.editingPerson.vorname = this.titleCaseWord(this.editingPerson.vorname);
+        this.editingPerson.nachname = this.titleCaseWord(this.editingPerson.nachname);
 
-          this.personen[index] = {...this.editingPerson}; //kopie
+        this.personen[index] = {...this.editingPerson}; //kopie
       }
       this.editingPerson = null;
     } else {
@@ -114,14 +114,14 @@ export class PersonenComponent implements OnInit{
   }
 
 
-  //sortieren von personen nach Name
+  //personen-sortieren
 
   sorted = false
   sortedPerson = [...this.personen];
 
   sortPersonByNachname(): void {
 
-    if(!this.sorted) {
+    if (!this.sorted) {
       this.sorted = true;
       this.sortedPerson.sort((a, b) => {
           if (a.nachname < b.nachname) return -1;
@@ -141,10 +141,13 @@ export class PersonenComponent implements OnInit{
     }
   }
 
+
+  //personen-details
+
   showDetailPerson: Person | null = null;
 
-  showInfoPerson(person: Person):void{
-    this.showDetailPerson =  {...person};
+  showInfoPerson(person: Person): void {
+    this.showDetailPerson = {...person};
     document.documentElement.scrollTop = 0
   }
 
@@ -152,7 +155,8 @@ export class PersonenComponent implements OnInit{
     this.showDetailPerson = null;
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   protected readonly PERSONEN = PERSONEN;
 }

@@ -1,5 +1,3 @@
-
-
 <div>
   <button (click)="sortPersonByNachname();">Sortieren</button>
   <button id="addUserCheckButton" (click)="toggleAddUser();">Person hinzufügen</button>
@@ -27,7 +25,6 @@
   <h4>Daten</h4>
   <label  for="geburtsdatum">Geburtsdatum: </label>
   <input id="geburtsdatum" readonly [(ngModel)]="showDetailPerson.geburtsdatum" >
-
   <label for="geschlecht">Geschlecht</label>
   <input id="geschlecht" readonly [(ngModel)]="showDetailPerson.geschlecht" >
   <button (click)="cancelInfo()">Schließen</button>
