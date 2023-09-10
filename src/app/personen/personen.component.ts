@@ -12,11 +12,22 @@ export class PersonenComponent implements OnInit{
 
   personen = PERSONEN;
 
+  infoPerson: Person = {
+    id: 0,
+    vorname: '',
+    nachname: '',
+    email: '',
+    geburtsdatum: "",
+    geschlecht: "",
+  }
+
   newUser: Person = {
     id: 0,
     vorname: '',
     nachname: '',
-    email: ''
+    email: '',
+    geburtsdatum: "",
+    geschlecht: "",
   };
 
   //hinzufügen von personen
@@ -40,7 +51,7 @@ export class PersonenComponent implements OnInit{
       }
 
       //das beseitigen der angegeben Daten nachdem Klick auf den button "Add User"
-    this.newUser = {id: 0, vorname: "", nachname: "", email: ""};
+    this.newUser = {id: 0, vorname: "", nachname: "", email: "", geburtsdatum: "", geschlecht: ""};
   } else {
       alert("Es wurden nicht alle Felder ausgefüllt!");
     }
@@ -56,7 +67,7 @@ export class PersonenComponent implements OnInit{
   toggleAddUser() {
     this.isAddUserClicked = !this.isAddUserClicked;
     if (!this.isAddUserClicked) {
-      this.newUser = { id: 0, vorname: "", nachname: "", email: "" };
+      this.newUser = { id: 0, vorname: "", nachname: "", email: "", geburtsdatum: "", geschlecht: ""};
     }
   }
 
@@ -105,12 +116,10 @@ export class PersonenComponent implements OnInit{
 
   //sortieren von personen nach Name
 
-
   sorted = false
   sortedPerson = [...this.personen];
 
   sortPersonByNachname(): void {
-
 
     if(!this.sorted) {
       this.sorted = true;
@@ -121,7 +130,6 @@ export class PersonenComponent implements OnInit{
         }
       );
       this.personen = this.sortedPerson;
-
     } else if (this.sorted) {
       this.sorted = false;
       this.sortedPerson.sort((a, b) => {
@@ -130,11 +138,21 @@ export class PersonenComponent implements OnInit{
           return 0;
         }
       );
-
-
     }
+  }
+
+  showDetailPerson: Person | null = null;
+
+  showInfoPerson(person: Person):void{
+    this.showDetailPerson =  {...person};
+    document.documentElement.scrollTop = 0
+  }
+
+  cancelInfo(): void {
+    this.showDetailPerson = null;
   }
 
   ngOnInit() {}
 
+  protected readonly PERSONEN = PERSONEN;
 }

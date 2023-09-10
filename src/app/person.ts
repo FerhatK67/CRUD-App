@@ -3,4 +3,6 @@ export interface Person{
   vorname: string;
   nachname: string;
   email: string;
+  geburtsdatum: string;
+  geschlecht: string;
 }

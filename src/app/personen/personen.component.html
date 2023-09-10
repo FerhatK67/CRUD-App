@@ -19,8 +19,18 @@
   <input [(ngModel)]="editingPerson.vorname" placeholder="Vorname">
   <input [(ngModel)]="editingPerson.nachname" placeholder="Nachname">
   <input [(ngModel)]="editingPerson.email" placeholder="Email">
-  <button (click)="updatePerson()"> Aktualisieren</button>
-  <button (click)="cancelEdit()">Abbrechen</button>
+  <button (click)="updatePerson()">Aktualisieren</button>
+  <button (click)="cancelEdit()">Schließen</button>
+</div>
+
+<div *ngIf="showDetailPerson">
+  <h4>Daten</h4>
+  <label  for="geburtsdatum">Geburtsdatum: </label>
+  <input id="geburtsdatum" readonly [(ngModel)]="showDetailPerson.geburtsdatum" >
+
+  <label for="geschlecht">Geschlecht</label>
+  <input id="geschlecht" readonly [(ngModel)]="showDetailPerson.geschlecht" >
+  <button (click)="cancelInfo()">Schließen</button>
 </div>
 
 <table>
@@ -37,6 +47,7 @@
     <td>{{person.nachname}}</td>
     <td>{{person.email}}</td>
     <td>
+      <button class="actionButton" (click)="showInfoPerson(person);"> Info</button>
       <button class="actionButton" (click)="delete(person);"><i class="fas fa-trash-alt"></i></button>
       <button class="actionButton" (click)="editPerson(person);"  ><i class="fas fa-edit"></i></button>
     </td>

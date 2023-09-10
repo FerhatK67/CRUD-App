@@ -1,52 +1,68 @@
 import { Person } from "./person";
 
-  export const PERSONEN: Person[] = [
-    { id: 1, vorname: "Jon", nachname: "Snow", email: "jon@mail.com" },
-    { id: 2, vorname: "Daenerys", nachname: "Targaryen", email: "daenerys@mail.com" },
-    { id: 3, vorname: "Tyrion", nachname: "Lannister", email: "tyrion@mail.com" },
-    { id: 4, vorname: "Arya", nachname: "Stark", email: "arya@mail.com" },
-    { id: 5, vorname: "Cersei", nachname: "Lannister", email: "cersei@mail.com" },
-    { id: 6, vorname: "Jaime", nachname: "Lannister", email: "jaime@mail.com" },
-    { id: 7, vorname: "Sansa", nachname: "Stark", email: "sansa@mail.com" },
-    { id: 8, vorname: "Eddard", nachname: "Stark", email: "ned@mail.com" },
-    { id: 9, vorname: "Robb", nachname: "Stark", email: "robb@mail.com" },
-    { id: 10, vorname: "Bran", nachname: "Stark", email: "bran@mail.com" },
-    { id: 11, vorname: "Rickon", nachname: "Stark", email: "rickon@mail.com" },
-    { id: 12, vorname: "Samwell", nachname: "Tarly", email: "sam@mail.com" },
-    { id: 13, vorname: "Gilly", nachname: "Tarly", email: "gilly@mail.com" },
-    { id: 14, vorname: "Jorah", nachname: "Mormont", email: "jorah@mail.com" },
-    { id: 15, vorname: "Theon", nachname: "Greyjoy", email: "theon@mail.com" },
-    { id: 16, vorname: "Yara", nachname: "Greyjoy", email: "yara@mail.com" },
-    { id: 17, vorname: "Davos", nachname: "Seaworth", email: "davos@mail.com" },
-    { id: 18, vorname: "Melisandre", nachname: "Red Priestess", email: "melisandre@mail.com" },
-    { id: 19, vorname: "Bronn", nachname: "of the Blackwater", email: "bronn@mail.com" },
-    { id: 20, vorname: "Podrick", nachname: "Payne", email: "podrick@mail.com" },
-    { id: 21, vorname: "Joffrey", nachname: "Baratheon", email: "joffrey@mail.com" },
-    { id: 22, vorname: "Tommen", nachname: "Baratheon", email: "tommen@mail.com" },
-    { id: 23, vorname: "Myrcella", nachname: "Baratheon", email: "myrcella@mail.com" },
-    { id: 24, vorname: "Stannis", nachname: "Baratheon", email: "stannis@mail.com" },
-    { id: 25, vorname: "Renly", nachname: "Baratheon", email: "renly@mail.com" },
-    { id: 26, vorname: "Drogo", nachname: "Khal", email: "drogo@mail.com" },
-    { id: 27, vorname: "Catelyn", nachname: "Stark", email: "catelyn@mail.com" },
-    { id: 28, vorname: "Robb", nachname: "Stark", email: "robb@mail.com" },
-    { id: 29, vorname: "Theon", nachname: "Greyjoy", email: "theon@mail.com" },
-    { id: 30, vorname: "Yara", nachname: "Greyjoy", email: "yara@mail.com" },
-    { id: 31, vorname: "Davos", nachname: "Seaworth", email: "davos@mail.com" },
-    { id: 32, vorname: "Melisandre", nachname: "Red Priestess", email: "melisandre@mail.com" },
-    { id: 33, vorname: "Bronn", nachname: "of the Blackwater", email: "bronn@mail.com" },
-    { id: 34, vorname: "Podrick", nachname: "Payne", email: "podrick@mail.com" },
-    { id: 35, vorname: "Joffrey", nachname: "Baratheon", email: "joffrey@mail.com" },
-    { id: 36, vorname: "Tommen", nachname: "Baratheon", email: "tommen@mail.com" },
-    { id: 37, vorname: "Myrcella", nachname: "Baratheon", email: "myrcella@mail.com" },
-    { id: 38, vorname: "Stannis", nachname: "Baratheon", email: "stannis@mail.com" },
-    { id: 39, vorname: "Renly", nachname: "Baratheon", email: "renly@mail.com" },
-    { id: 40, vorname: "Drogo", nachname: "Khal", email: "drogo@mail.com" },
-    { id: 41, vorname: "Catelyn", nachname: "Stark", email: "catelyn@mail.com" },
-    { id: 42, vorname: "Jorah", nachname: "Mormont", email: "jorah@mail.com" },
-    { id: 43, vorname: "Theon", nachname: "Greyjoy", email: "theon@mail.com" },
-    { id: 44, vorname: "Yara", nachname: "Greyjoy", email: "yara@mail.com" },
-    { id: 45, vorname: "Davos", nachname: "Seaworth", email: "davos@mail.com" },
-    { id: 46, vorname: "Melisandre", nachname: "Red Priestess", email: "melisandre@mail.com" },
-    { id: 47, vorname: "Bronn", nachname: "of the Blackwater", email: "bronn@mail.com" },
-    { id: 48, vorname: "Podrick", nachname: "Payne", email: "podrick@mail.com" },
-  ];
+export const PERSONEN: Person[] = [
+  {
+    id: 1,
+    vorname: "Jon",
+    nachname: "Snow",
+    email: "jon@mail.com",
+    geburtsdatum: "1990-01-01", // Geburtsdatum als String
+    geschlecht: "männlich" // Geschlecht als String
+  },
+  {
+    id: 2,
+    vorname: "Daenerys",
+    nachname: "Targaryen",
+    email: "daenerys@mail.com",
+    geburtsdatum: "1988-05-15",
+    geschlecht: "weiblich"
+  },
+  {
+    id: 3,
+    vorname: "Tyrion",
+    nachname: "Lannister",
+    email: "tyrion@mail.com",
+    geburtsdatum: "1980-11-30",
+    geschlecht: "männlich"
+  },
+  {
+    id: 4,
+    vorname: "Arya",
+    nachname: "Stark",
+    email: "arya@mail.com",
+    geburtsdatum: "1995-03-20",
+    geschlecht: "weiblich"
+  },
+  {
+    id: 5,
+    vorname: "Cersei",
+    nachname: "Lannister",
+    email: "cersei@mail.com",
+    geburtsdatum: "1985-09-05",
+    geschlecht: "weiblich"
+  },
+  {
+    id: 6,
+    vorname: "Jaime",
+    nachname: "Lannister",
+    email: "jaime@mail.com",
+    geburtsdatum: "1980-12-25",
+    geschlecht: "männlich"
+  },
+  {
+    id: 7,
+    vorname: "Sansa",
+    nachname: "Stark",
+    email: "sansa@mail.com",
+    geburtsdatum: "1992-07-10",
+    geschlecht: "weiblich"
+  },
+  {
+    id: 8,
+    vorname: "Eddard",
+    nachname: "Stark",
+    email: "ned@mail.com",
+    geburtsdatum: "1965-04-03",
+    geschlecht: "männlich"
+  },
+];
