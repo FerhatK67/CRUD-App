@@ -1,6 +1,8 @@
+/* styling der Startseite Komponenten */
+
 h1 {
   margin: 4px;
- font-size: 64px;
+  font-size: 64px;
 }
 
 button{

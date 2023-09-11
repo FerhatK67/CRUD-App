@@ -1,3 +1,5 @@
+//person interface Objekt
+
 export interface Person{
   id: number;
   vorname: string;

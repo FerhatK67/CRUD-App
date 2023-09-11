@@ -1,35 +1,58 @@
 <div>
-  <button (click)="sortPersonByNachname();">Sortieren</button>
-  <button id="addUserCheckButton" (click)="toggleAddUser();">Person hinzufügen</button>
+  <button (click)="sortPersonByNachname();">Sortieren</button>                                   <!--  Button für das Sortieren des Personen-arrays-->
+  <button id="addUserCheckButton" (click)="toggleAddUser();">Person hinzufügen</button>          <!--  Button für das hinzufügen von Personen-->
 
+<!--  Dieser Bereich wird angezeigt wenn man eine Person hinzufügen möchte mit Input Feldern-->
   <div *ngIf="isAddUserClicked">
     <h3>Hinzufügen</h3>
     <input [(ngModel)]="newUser.vorname" placeholder="Vorname">
     <input [(ngModel)]="newUser.nachname" placeholder="Nachname">
     <input [(ngModel)]="newUser.email" placeholder="Email">
-    <button id="addUserButton" (click)="addNewUser()">Bestätigen</button>
-    <button (click)="toggleAddUser();">Schließen</button>
+    <button id="addUserButton" (click)="addNewUser()">Bestätigen</button>  <!--Bestätigung zum Hinzufügen einer neuen Person-->
+    <button (click)="toggleAddUser();">Schließen</button>                  <!--Schließen des Hinzufügen-bereichs-->
   </div>
 </div>
 
+<!--  Dieser Bereich wird angezeigt wenn man eine Person editieren möchte mit Input Feldern, dies geschieht beim Klicken des Buttons Z.67-->
 <div *ngIf="editingPerson">
   <h3>Bearbeiten</h3>
   <input [(ngModel)]="editingPerson.vorname" placeholder="Vorname">
   <input [(ngModel)]="editingPerson.nachname" placeholder="Nachname">
   <input [(ngModel)]="editingPerson.email" placeholder="Email">
-  <button (click)="updatePerson()">Aktualisieren</button>
-  <button (click)="cancelEdit()">Schließen</button>
+  <button (click)="updatePerson()">Aktualisieren</button>   <!--Bestätigung der Änderungen-->
+  <button (click)="cancelEdit()">Schließen</button>         <!--Schließen des Editier-bereichs-->
 </div>
 
-<div *ngIf="showDetailPerson">
-  <h4>Daten</h4>
-  <label  for="geburtsdatum">Geburtsdatum: </label>
-  <input id="geburtsdatum" readonly [(ngModel)]="showDetailPerson.geburtsdatum" >
-  <label for="geschlecht">Geschlecht</label>
-  <input id="geschlecht" readonly [(ngModel)]="showDetailPerson.geschlecht" >
-  <button (click)="cancelInfo()">Schließen</button>
+<!-- Dieser Bereich behandelt die Daten einer ausgewählten Person einzusehen-->
+<!-- Hierbei sind die Daten nur einsehbar-->
+<div class="formGroup" *ngIf="showDetailPerson">
+  <div class="styleInput">
+    <label for="vorname">Vorname:</label>
+    <input class="infoInput" id="vorname" readonly [(ngModel)]="showDetailPerson.vorname">
+  </div>
+  <div class="styleInput">
+    <label for="nachname">Nachname:</label>
+    <input class="infoInput" id="nachname" readonly [(ngModel)]="showDetailPerson.nachname">
+  </div>
+  <div class="styleInput">
+    <label for="email">Email:</label>
+    <input class="infoInput" id="email" readonly [(ngModel)]="showDetailPerson.email">
+  </div>
+  <div class="styleInput">
+    <label for="geburtsdatum">Geburtsdatum: </label>
+    <input class="infoInput" id="geburtsdatum" readonly [(ngModel)]="showDetailPerson.geburtsdatum">
+  </div>
+  <div class="styleInput">
+    <label for="geschlecht">Geschlecht:</label>
+    <input class="infoInput" id="geschlecht" readonly [(ngModel)]="showDetailPerson.geschlecht">
+  </div>
+  <button (click)="cancelInfo()">Schließen</button>    <!--Hier wird der Info-bereich geschlossen-->
 </div>
 
+
+<!--Die Tabelle in der das mock-personen array eingefügt wird mittels einer Schleifenfunktion-->
+<!--Hier werden Id, Vorname, Nachname und Email angezeigt-->
+<!--Daneben in der Aktionsspalte befinden Buttons mit denen man mit der Tabelle interagieren kann wie das Löschen, Hinzufügen oder Datenansicht von Personen-Objekten-->
 <table>
   <tr>
     <th>Id</th>
@@ -38,15 +61,17 @@
     <th>Email</th>
     <th>Aktion</th>
   </tr>
-  <tr *ngFor="let person of personen">
+  <tr *ngFor="let person of personen">   <!-- die for-Schleife für das array -->
     <td>{{person.id}}</td>
     <td>{{person.vorname}}</td>
     <td>{{person.nachname}}</td>
     <td>{{person.email}}</td>
     <td>
-      <button class="actionButton" (click)="showInfoPerson(person);"> Info</button>
-      <button class="actionButton" (click)="delete(person);"><i class="fas fa-trash-alt"></i></button>
-      <button class="actionButton" (click)="editPerson(person);"  ><i class="fas fa-edit"></i></button>
+      <button class="actionButton" (click)="showInfoPerson(person);"><i class="fa-solid fa-circle-info"></i></button> <!-- Info-Button mit einer Font Graphik -->
+      <button class="actionButton" (click)="editPerson(person);"><i class="fas fa-edit"></i></button>                 <!-- Editier-Button mit einer Font Graphik -->
+      <button class="actionButton" (click)="delete(person);"><i class="fas fa-trash-alt"></i></button>                <!-- Lösch-Button mit einer Font Graphik -->
     </td>
   </tr>
 </table>
+
+<!-- Ende der Tabellenansicht -->

@@ -1,5 +1,7 @@
 import { Person } from "./person";
 
+//das mock-array von personen welches die Datenbank aus dem backend simulieren soll.
+
 export const PERSONEN: Person[] = [
   {
     id: 1,
