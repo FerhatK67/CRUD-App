@@ -1,0 +1,44 @@
+
+1. Das erstellen des Projekts
+
+Tour of Heroes konnte mir eine gute Einführung in Angular geben, weshalb ich mich in einigen Dingen daran gehalten habe.
+Ebenso habe ich zur Übung mich mit styling auseinander gestetzt und versucht die Seite anschaulich und benutzer freundlicher zu machen.
+
+Ich hatte am Anfang das personen-array in der personen Komponente drinne, entschied mich aber im Verlaufe des Progammierprozesses dies zur Überschaubarkeit in eine seperate File,
+namens mock-personen.ts, zu verlegen.
+
+2. Hinzufügen von Personen
+
+Habe mich von der add Funktion von Tour of Heroes inspirieren, bezüglich der Abfrage von leeren Eingaben. lassen. Die Felder werden dann beim Bestätigen der add Funktion geleert und ausgeblendet.
+Im späteren Verlauf des Programmierprozesses, während der Implementation der Sortierfunktion wollte ich, dass das Objekt direkt einsortiert wird, weshalb ich die sorted Abfrage hinzugefügt habe.
+Das Sortieren erkennt auch nur Daten wenn das 1. Zeichen groß geschrieben ist, weshalb ich die Methode titleCaseWord verfasst habe, die dies übernimmt.
+
+3. Löschen von Personen
+
+Das Implementieren einer Löschfunktion war mittels der .filter Funktion von arrays leicht realisierbar.
+
+4. Editieren von Personen
+
+Bei der Editier-Methode konnte ich mich von der Tour of Heroes Variante leiten lassen hinsichtlich der Sichtbarkeiten von Benutzeroberflächen. Dies wäre die  Methode editPerson (Siehe Z. 76)
+Später ist mir eingefallen, dass es Nutzer technisch blöd wäre, wenn man Klicken auf den Editier Button die ganze Tabelle hochscrollen müsste, weshalb ich diese Methode durchs automatisch scrollen erweitert habe.
+
+Das updaten eines Objekts hat ähnlichkeiten zun Hinzufügen weshalb ich mir nur Gedanken zum finden des Indexes des ausgewählten Objekts machen musste. Dies ging mittels der .findIndex Funktion auch fix.
+Genau wie bei der add Funktion sollte der geänderte Eintrag den Sortierungskriterien gleichen weshalb ich diese im späteren Verlauf damit erweiterte.
+
+
+5. Ansicht Änderung
+
+Ich wollte eine Hauptseite erstellen, dies ging am einfachsten indem ich die Tabellenansicht erst beim Klicken des "Personen Liste" Buttons einblende. Sonst ist nur der Titel und ein Button zu sehen.
+
+6. Personen Details
+
+Da ich schon die Tabelle fertig hatte in der alle genannten Variablen des Personen-Objekts gelistet sind, habe ich mich entschieden in Anbetracht der Details-Funktionalität 2 weitere Attribute
+,Geburtsdatum und Geschlecht hinzuzufügen, die nur beim Klicken des Info-Buttons auftauchen.
+Im Html bereich entschied ich mich die Input felder als readonly zu initialisieren, da diese nur für das Einlesen gedacht sind.
+
+
+7. Html
+
+Meine Seite ist so strukturiert, dass alle Features sich rund um die Tabelle beziehen. Das Sortieren sowie hinzufügen habe ich überhalb der Tabelle platziert, da diese nicht mit einzelnen Elementen der Tabelle
+interagiert. In der Tabelle habe ich die Reihe Aktion kreiert, in der die restlichen Funktionalitäten erreichbar sind.
+Damit die Seite sauber und nicht vollgekleistert aussieht, werden die Benutzeroberflächen mittels Buttons ein- und ausgeblendet.
