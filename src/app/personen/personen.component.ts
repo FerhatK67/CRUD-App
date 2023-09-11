@@ -10,8 +10,6 @@ import {PERSONEN} from "../mock-personen";
 export class PersonenComponent implements OnInit {
   personen = PERSONEN;    //Array aus mock-personen initialisiert
 
-
-
   newUser: Person = {         //leeres Person Objekt
     id: 0,
     vorname: '',
@@ -97,7 +95,19 @@ export class PersonenComponent implements OnInit {
 
         this.personen[index] = {...this.editingPerson}; //Das Objekt wird mit den Änderungen geupdatet
       }
+
       this.editingPerson = null; //Kopie wird geleert
+
+      if (this.sorted) {     //Überprüft, ob die Liste sortiert wurde und reiht es dementsprechend in die Liste ein
+        this.sortedPerson.sort((a, b) => {
+            if (a.nachname < b.nachname) return -1;
+            if (a.nachname > b.nachname) return 1;
+            return 0;
+          }
+        );
+        this.personen = this.sortedPerson;
+      }
+
     } else {
       alert("Es wurden nicht alle Felder ausgefüllt!");  //Fehlermeldung falls nicht alle Felder ausgefüllt wurden
     }
